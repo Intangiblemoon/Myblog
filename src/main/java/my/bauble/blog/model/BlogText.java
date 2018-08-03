@@ -39,6 +39,9 @@ public class BlogText {
      */
     private Integer typeId;
 
+    public BlogText() {
+    }
+
     /**
      * 获取
      * @return id String
@@ -117,5 +120,17 @@ public class BlogText {
      */
     public void setTypeId(Integer typeId) {
         this.typeId = typeId;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("BlogText{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", text='").append(text).append('\'');
+        sb.append(", actor='").append(actor).append('\'');
+        sb.append(", createtime=").append(createtime);
+        sb.append(", typeId=").append(typeId);
+        sb.append('}');
+        return sb.toString();
     }
 }

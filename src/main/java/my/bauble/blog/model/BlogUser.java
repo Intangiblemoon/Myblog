@@ -33,6 +33,9 @@ public class BlogUser {
      */
     private Date createtime;
 
+    public BlogUser() {
+    }
+
     /**
      * 获取
      * @return id Integer
@@ -95,5 +98,16 @@ public class BlogUser {
      */
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("BlogUser{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", password='").append(password).append('\'');
+        sb.append(", createtime=").append(createtime);
+        sb.append('}');
+        return sb.toString();
     }
 }

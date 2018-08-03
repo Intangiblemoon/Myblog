@@ -1,16 +1,14 @@
 package my.bauble.blog.mapper;
 
 import my.bauble.blog.model.BlogUser;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Mapper
+@Repository
 public interface BlogUserMapper {
     /**
      * 根据主键删除 
@@ -84,4 +82,21 @@ public interface BlogUserMapper {
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(BlogUser record);
+
+    /**
+     * 获得密码
+     * @param name
+     * @return
+     */
+    @Select("select password from blog_user where name = #{name,jdbcType=VARCHAR}")
+    String getPass(String name);
+
+    /**
+     * 根据名字修改密码
+     * @param name
+     * @param password
+     * @return
+     */
+    @Update("update blog_user set password = #{password,jdbcType=VARCHAR} where name = #{name,jdbcType=VARCHAR}")
+    int updatePassByName(@Param("name") String name, @Param("password") String password);
 }

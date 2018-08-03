@@ -27,6 +27,9 @@ public class BlogType {
      */
     private Date createtime;
 
+    public BlogType() {
+    }
+
     /**
      * 获取
      * @return id Integer
@@ -73,5 +76,15 @@ public class BlogType {
      */
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("BlogType{");
+        sb.append("id=").append(id);
+        sb.append(", typeName='").append(typeName).append('\'');
+        sb.append(", createtime=").append(createtime);
+        sb.append('}');
+        return sb.toString();
     }
 }

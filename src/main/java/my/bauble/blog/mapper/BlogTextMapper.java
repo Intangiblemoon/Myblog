@@ -11,6 +11,8 @@ import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
 
+import java.util.List;
+
 public interface BlogTextMapper {
     /**
      * 根据主键删除 
@@ -88,4 +90,19 @@ public interface BlogTextMapper {
         "where id = #{id,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(BlogText record);
+
+    /**
+     * 根据typeId查找
+     * @param typeId
+     * @return
+     */
+    @Select("select id, text, actor, createtime, type_id from blog_text where type_id = #{typeId,jdbcType=VARCHAR}")
+    List<BlogText> findByTypeId(String typeId);
+
+    /**
+     * 查询全部
+     * @return
+     */
+    @Select("select id, text, actor, createtime, type_id from blog_text")
+    List<BlogText> findAll();
 }

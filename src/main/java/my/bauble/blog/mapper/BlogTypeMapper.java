@@ -11,6 +11,8 @@ import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
 
+import java.util.List;
+
 public interface BlogTypeMapper {
     /**
      * 根据主键删除 
@@ -82,4 +84,15 @@ public interface BlogTypeMapper {
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(BlogType record);
+
+    /**
+     * 查询全部
+     * @return List<BlogType>
+     */
+    @Select({
+            "select",
+            "id, type_name, createtime",
+            "from blog_type"
+    })
+    List<BlogType> findAll();
 }
