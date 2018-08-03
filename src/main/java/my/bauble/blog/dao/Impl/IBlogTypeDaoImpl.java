@@ -4,6 +4,7 @@ import my.bauble.blog.dao.IBlogTypeDao;
 import my.bauble.blog.mapper.BlogTypeMapper;
 import my.bauble.blog.model.BlogType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @author wensiao
  * @create 2018-08-03 15:34
  **/
+@Component
 public class IBlogTypeDaoImpl implements IBlogTypeDao {
 
     @Autowired
